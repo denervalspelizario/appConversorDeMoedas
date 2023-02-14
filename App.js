@@ -15,7 +15,8 @@ class App extends Component {
 
       return(
         <View style={styles.container}>
-          <Conversor moedaA='USD' moedaB='BRL'/>
+          {/* Compoennte criado e importados com duas props  */}
+          <Conversor moedaA='USD' moedaB='BRL'/> 
 
             
           
@@ -29,6 +30,8 @@ class App extends Component {
     
     container: {
       flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center'
     }
     
 });
