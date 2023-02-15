@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, } from 'react-native'; 
 import Conversor from './src/Conversor';
-import api from './src/service/api';  // importando a api
 
 // api usada https://economia.awesomeapi.com.br/json/last/:moedas
 // * 1 para usar a requisicao de http no expo tem que se instalar a bibioteca comando npm install axios 
@@ -18,6 +17,8 @@ class App extends Component {
         <View style={styles.container}>
           {/* Compoennte criado e importados com duas props  */}
           <Conversor moedaA='USD' moedaB='BRL'/> 
+
+          <Conversor moedaA='BRL' moedaB='USD'/> 
 
             
           

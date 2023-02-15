@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native'; 
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard } from 'react-native';  // importando o keyboard 
 import api from '../service/api';  // importando a api
 
 
@@ -37,7 +37,10 @@ class Conversor extends Component {
         let resultadoCotacao = (cotacao * parseFloat(this.state.moedaB_valor)) // ou seja multiplica o valor da cotação com o valor digitado (leia linha 53)
                                                                                // parsefloat sempre retorna um numero em decimal mesmo que ele nao seja    
         
-        //console.log(response.data.USDBRL.high); obs apenas confirmando se a api esta funcionando e puxando o dado                                            
+        //console.log(response.data.USDBRL.high); obs apenas confirmando se a api esta funcionando e puxando o dado   
+        
+        this.setState({valorConvertido: resultadoCotacao.toFixed(2)}) // altera o state com o valorCovertido que se inicia com 0 para o resultadoCotacao(linha 37 e 63)     
+        Keyboard.dismiss();  // fecha o teclado automaticamente assim   que se clica em outro lugar fora dele                                
     }
 
     render(){
@@ -54,12 +57,12 @@ class Conversor extends Component {
             keyboardType='numeric'
           />  
 
-          <TouchableOpacity style={styles.botaoArea}  onPress={this.converter()}>
+          <TouchableOpacity style={styles.botaoArea}  onPress={this.converter}>
             <Text style={styles.botaoTexto}>Converter</Text>
           </TouchableOpacity>
 
           <Text style={styles.valorConvertido}>
-            {this.state.valorConvertido}
+            {(this.state.valorConvertido) === 0 ? '' : this.state.valorConvertido }
           </Text>
             
           
